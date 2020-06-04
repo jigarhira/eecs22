@@ -1,0 +1,27 @@
+|-------------------------------|
+| PhotoLab v3 (Assignment 4)	|
+|				|
+| EECS 22 Fall 2018		|
+| Jigar Hira			|
+| 92549698			|
+| hiraj@uci.edu			|
+|-------------------------------|
+
+The PhotoLab program loads, manipulates, and saves .ppm image files. From the previous version, this version features dynamic data structures to allow for loading, manipulation, and saving of images of any size. Instead of storing the images in RGB arrays, images are stored using a custom defined structure. The structure allows for dynamic sizing through the use of malloc() and free() memory management functions. Additionally, three new DIP manipulations were added: rotate, resize, and saturation. 
+
+
+Rotate:
+
+The Rotate manipulation has four sub-features. The first two are horizontal and vertical flips, and the last two are right and left 90 degree rotations. These are done by first copying the original image to a temporary image. The original is then deleted and a new image with the correct dimensions is created. Each pixel in the new image is iterated through and the appropriate coordinate transformation is applied.
+
+
+Resize:
+
+The Resize manipulation changes the pixel size of the image, either enlarging or shrinking the image. If the resize percentage is greater than 100 (enlarging) a new image is created with the appropriate pixel dimensions and iterated through. Each pixel in the old image can be mapped to more than one pixel (transformation is not one to one) in the new image. This makes it simpler to iterate through the new image. For percentages less than 100 (shrinking), a new smaller image is created and iterated through. For every pixel in the new image, the group of pixels in the original image is averaged to generate the appropriate value. This average is then applied to the corresponding color channel for the new image. After all transformations, the temporary image that was used is freed.  
+
+
+Saturation:
+
+The Saturation manipulation adjusts the color saturation of an image. No temporary image was needed for this DIP, each pixel is transformed one by one. The original image is itrated through and for each pixel, the difference between the original color channel and the average of the three color channels is calculated. This is then multiplied by the saturation factor and added to the original color values. This will make the saturation adjustment. All the color channels are then corrected to ensure they are between [0, 255].
+
+

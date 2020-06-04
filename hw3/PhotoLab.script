@@ -1,0 +1,98 @@
+Script started on Thu 08 Nov 2018 09:19:29 AM PST
+]0;hiraj@laguna:hw3[hiraj@laguna hw3]$ make Photol[KLab
+gcc -c -ansi -std=c99 -Wall PhotoLab.c -o PhotoLab.o
+gcc -c -ansi -std=c99 -Wall FileIO.c -o FileIO.o
+gcc -c -ansi -std=c99 -Wall DIPs.c -o DIPs.o
+gcc -c -ansi -std=c99 -Wall Advanced.c -o Advanced.o
+gcc -Wall -lm PhotoLab.o FileIO.o DIPs.o Advanced.o -o PhotoLab
+]0;hiraj@laguna:hw3[hiraj@laguna hw3]$ ./PhotoLab 
+
+----------------------------
+ 1: Load a PPM image
+ 2: Save an image in PPM and JPEG format
+ 3: Change a color image to Black & White
+ 4: Sketch the edge of an image
+ 5: Shuffle an image
+ 6: Adjust the brightness of an image
+ 7: Horizontal mirror of the left half
+ 8: Hue rotation
+ 9: Test all functions
+ 10: Exit
+Please make your choice: 9
+HSSOE.ppm was read.
+bw.ppm was saved. 
+bw.jpg was stored.
+HSSOE.ppm was read.
+edge.ppm was saved. 
+edge.jpg was stored.
+HSSOE.ppm was read.
+shuffle.ppm was saved. 
+shuffle.jpg was stored.
+HSSOE.ppm was read.
+brightness.ppm was saved. 
+brightness.jpg was stored.
+HSSOE.ppm was read.
+hmirror.ppm was saved. 
+hmirror.jpg was stored.
+HSSOE.ppm was read.
+hue.ppm was saved. 
+hue.jpg was stored.
+
+----------------------------
+ 1: Load a PPM image
+ 2: Save an image in PPM and JPEG format
+ 3: Change a color image to Black & White
+ 4: Sketch the edge of an image
+ 5: Shuffle an image
+ 6: Adjust the brightness of an image
+ 7: Horizontal mirror of the left half
+ 8: Hue rotation
+ 9: Test all functions
+ 10: Exit
+Please make your choice: 10
+You exit the program.
+]0;hiraj@laguna:hw3[hiraj@laguna hw3]$ make PhotoLabTest
+gcc -c -ansi -std=c99 -Wall -g -DDEBUG PhotoLab.c -o PhotoLabTest.o
+gcc -Wall -lm	PhotoLabTest.o FileIO.o DIPs.o Advanced.o -o PhotoLabTest
+]0;hiraj@laguna:hw3[hiraj@laguna hw3]$ ./P
+PhotoLab*     PhotoLabTest* 
+]0;hiraj@laguna:hw3[hiraj@laguna hw3]$ ./PhotoLabTest
+HSSOE.ppm was read.
+bw.ppm was saved. 
+bw.jpg was stored.
+Black & White tested!
+
+HSSOE.ppm was read.
+edge.ppm was saved. 
+edge.jpg was stored.
+Edge Detection tested!
+
+HSSOE.ppm was read.
+shuffle.ppm was saved. 
+shuffle.jpg was stored.
+Shuffle tested!
+
+HSSOE.ppm was read.
+brightness.ppm was saved. 
+brightness.jpg was stored.
+Brightness tested!
+
+HSSOE.ppm was read.
+hmirror.ppm was saved. 
+hmirror.jpg was stored.
+Horizontal Mirror tested!
+
+HSSOE.ppm was read.
+hue.ppm was saved. 
+hue.jpg was stored.
+Hue Rotation tested!
+
+]0;hiraj@laguna:hw3[hiraj@laguna hw3]$ make clean
+rm *.o		# Removes all the object files
+rm PhotoLab	# Removes the PhotoLab binary file
+rm PhotoLabTest	# Removes the PhotoLabTest binary file
+find . -maxdepth 1 \( -name '*.ppm' -a ! \( -name 'HSSOE.ppm' \) \) -type f -exec rm {} +	# Removes all .ppm files except for HSSOE.ppm
+]0;hiraj@laguna:hw3[hiraj@laguna hw3]$ exit
+exit
+
+Script done on Thu 08 Nov 2018 09:21:05 AM PST

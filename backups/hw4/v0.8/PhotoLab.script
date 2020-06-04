@@ -1,0 +1,134 @@
+Script started on Sat 24 Nov 2018 05:48:49 PM PST
+]0;hiraj@laguna:hw4[hiraj@laguna hw4]$ make
+gcc -ansi -std=c99 -Wall -c PhotoLab.c -o PhotoLab.o
+gcc -ansi -std=c99 -Wall -c FileIO.c -o FileIO.o
+gcc -ansi -std=c99 -Wall -c Image.c -o Image.o
+gcc -ansi -std=c99 -Wall -c Test.c -o Test.o
+gcc -ansi -std=c99 -Wall -c  DIPs.c -o DIPs.o
+gcc -ansi -std=c99 -Wall -c Advanced.c -o Advanced.o
+ar rc libFilter.a Advanced.o DIPs.o
+ranlib libFilter.a
+gcc -ansi -std=c99 -Wall -lm PhotoLab.o FileIO.o Image.o Test.o -L. -lFilter -o PhotoLab
+gcc -ansi -std=c99 -Wall -c -DDEBUG -g -c PhotoLab.c -o PhotoLab_DEBUG.o
+gcc -ansi -std=c99 -Wall -lm PhotoLab_DEBUG.o FileIO.o Image.o Test.o -L. -lFilter -o PhotoLabTest
+]0;hiraj@laguna:hw4[hiraj@laguna hw4]$ ./PhotoLab
+
+----------------------------
+ 1: Load a PPM image
+ 2: Save an image in PPM and JPEG format
+ 3: Change a color image to Black & White
+ 4: Sketch the edge of an image
+ 5: Shuffle an image
+ 6: Adjust the brightness of an image
+ 7: Mirror an image horizontally
+ 8: Adjust the hue of an image
+ 9: Rotate or flip the image
+ 10:Resize the image
+ 11:Saturate the image
+ 12:Test all functions
+ 13:Exit
+Please make your choice: 12
+HSSOE.ppm was read.
+bw.ppm was saved. 
+bw.jpg was stored.
+HSSOE.ppm was read.
+edge.ppm was saved. 
+edge.jpg was stored.
+HSSOE.ppm was read.
+shuffle.ppm was saved. 
+shuffle.jpg was stored.
+HSSOE.ppm was read.
+brightness.ppm was saved. 
+brightness.jpg was stored.
+HSSOE.ppm was read.
+hmirror.ppm was saved. 
+hmirror.jpg was stored.
+HSSOE.ppm was read.
+hue.ppm was saved. 
+hue.jpg was stored.
+HSSOE.ppm was read.
+rotater.ppm was saved. 
+rotater.jpg was stored.
+HSSOE.ppm was read.
+hflip.ppm was saved. 
+hflip.jpg was stored.
+HSSOE.ppm was read.
+smallresize.ppm was saved. 
+smallresize.jpg was stored.
+HSSOE.ppm was read.
+bigresize.ppm was saved. 
+bigresize.jpg was stored.
+HSSOE.ppm was read.
+saturate.ppm was saved. 
+saturate.jpg was stored.
+
+----------------------------
+ 1: Load a PPM image
+ 2: Save an image in PPM and JPEG format
+ 3: Change a color image to Black & White
+ 4: Sketch the edge of an image
+ 5: Shuffle an image
+ 6: Adjust the brightness of an image
+ 7: Mirror an image horizontally
+ 8: Adjust the hue of an image
+ 9: Rotate or flip the image
+ 10:Resize the image
+ 11:Saturate the image
+ 12:Test all functions
+ 13:Exit
+Please make your choice: 13
+You exit the program.
+]0;hiraj@laguna:hw4[hiraj@laguna hw4]$ valgrind --leak-check=full ./PhotoLabTet[Kst
+==87226== Memcheck, a memory error detector
+==87226== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==87226== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==87226== Command: ./PhotoLabTest
+==87226== 
+HSSOE.ppm was read.
+bw.ppm was saved. 
+bw.jpg was stored.
+HSSOE.ppm was read.
+edge.ppm was saved. 
+edge.jpg was stored.
+HSSOE.ppm was read.
+shuffle.ppm was saved. 
+shuffle.jpg was stored.
+HSSOE.ppm was read.
+brightness.ppm was saved. 
+brightness.jpg was stored.
+HSSOE.ppm was read.
+hmirror.ppm was saved. 
+hmirror.jpg was stored.
+HSSOE.ppm was read.
+hue.ppm was saved. 
+hue.jpg was stored.
+HSSOE.ppm was read.
+rotater.ppm was saved. 
+rotater.jpg was stored.
+HSSOE.ppm was read.
+hflip.ppm was saved. 
+hflip.jpg was stored.
+HSSOE.ppm was read.
+smallresize.ppm was saved. 
+smallresize.jpg was stored.
+HSSOE.ppm was read.
+bigresize.ppm was saved. 
+bigresize.jpg was stored.
+HSSOE.ppm was read.
+saturate.ppm was saved. 
+saturate.jpg was stored.
+==87226== 
+==87226== HEAP SUMMARY:
+==87226==     in use at exit: 0 bytes in 0 blocks
+==87226==   total heap usage: 98 allocs, 98 frees, 14,593,104 bytes allocated
+==87226== 
+==87226== All heap blocks were freed -- no leaks are possible
+==87226== 
+==87226== For counts of detected and suppressed errors, rerun with: -v
+==87226== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 8 from 6)
+]0;hiraj@laguna:hw4[hiraj@laguna hw4]$ make cle[Kean
+rm -f *.o *.jpg PhotoLab PhotoLabTest bw.ppm edge.ppm shuffle.ppm brightness.ppm hmirror.ppm hue.ppm bigresize.ppm smallresize.ppm rotate.ppm rotater.ppm saturate.ppm hflip.ppm libFilter.a
+]0;hiraj@laguna:hw4[hiraj@laguna hw4]$ exit
+exit
+
+Script done on Sat 24 Nov 2018 05:49:52 PM PST

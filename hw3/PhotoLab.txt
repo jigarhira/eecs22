@@ -1,0 +1,25 @@
+|-------------------------------|
+| PhotoLab v2 (Assignment 3)	|
+|				|
+| EECS 22 Fall 2018		|
+| Jigar Hira			|
+| 92549698			|
+| hiraj@uci.edu			|
+|-------------------------------|
+
+The PhotoLab program loads, manipulates, and saves .ppm image files. From the previous version, this version features multiple source files and headers, allowing for better modubility and organization. Additionally, all source files are compiled to objects and then linked together through a makefile for ease of use and testing. A PhotoLabTest binary is also availible for testing the program. This week I added three new image manipulations: brightness, horizontal mirror, and hue rotation. Image loading and saving files were provided, but all image manipulation implimentation is original.
+
+Brightness:
+
+The Brightness manipulation is farily simple. The user inputs a brightness modification (integer value) and the values of every color channel for each pixel is then adjusted. Each color channel is still limited to the range [0, 255] to prevent modulous rollover of the data type.
+
+Horizonatl Mirror:
+
+The Horizontal mirror manipulation mirrors the left half of an image over to the right half through the center. The function iterates through all the pixels in the left half of the image and copys the values to the corresponding pixel on the right half. All indexing is done with some simple math, resulting in a simple implimentation.
+
+
+Hue Rotation:
+
+The Hue Rotation manipulation converts the image from the RGB colorspace to the color wheel format, and then performs a roation of the given angle. After this transformation, the image is brought back to the RGB colorspace. This is done by first normalizing all the RGB channel values to [0,1]. After this, a matrix transformation is used to convert to color wheel. Another transformation is used to add the desired angle of rotation, and then the values are returned to RGB through yet another matrix transformation. Once the RGB values are de-noramlized, the image is done. All RGB values are set to the interval [0, 255] to prevent overflow of the datatype.
+
+
